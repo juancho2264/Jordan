@@ -6,19 +6,22 @@
     <title>Michael Jordan: El Legado del 23 - Una Experiencia Definitiva</title>
     <meta name="description" content="Explora la carrera, los momentos icónicos y el legado imborrable de Michael Jordan, el mejor jugador de baloncesto de todos los tiempos. Una web interactiva con videos, estadísticas y trivia.">
     
-    <!-- Favicon (Tu logo) -->
+    <!-- Favicon -->
     <link rel="icon" type="image/jpeg" href="https://wallpapercave.com/wp/y4fbSdI.jpg">
     
-    <!-- Tailwind CSS y Google Fonts -->
+    <!-- Tailwind CSS & Google Fonts -->
+    <!-- Tailwind CSS y Fuentes de Google -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
     
     <!-- AOS (Animate on Scroll) Library -->
+    <!-- Librería AOS (Animar al hacer Scroll) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
+        /* --- General Styles & Variables / Estilos Generales y Variables --- */
         :root {
             --color-black: #0a0a0a;
             --color-red: #ce1141;
@@ -32,61 +35,53 @@
             color: var(--color-white);
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
-            transition: opacity 0.4s ease-out; /* Para la animación de salida */
+            transition: opacity 0.4s ease-out;
         }
         
         body.fade-out {
             opacity: 0;
         }
 
+        /* --- Typography / Tipografía --- */
         h1, h2, h3, .font-display { font-family: 'Anton', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
         .font-subdisplay { font-family: 'Bebas Neue', cursive; }
-
         .stroked-text { color: transparent; -webkit-text-stroke: 1px var(--color-red); }
 
+        /* --- Backgrounds / Fondos --- */
         .court-background { background-image: linear-gradient(rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.96)), url('https://www.viajarchicago.com/img/visitar-chicago-bulls.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; }
-        
         .hero-background {
             background-image: linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.2) 50%, rgba(10, 10, 10, 0.8) 100%), url('https://www.chromethemer.com/download/hd-wallpapers/michael-jordan-3840x2160.jpg');
             background-size: cover;
-            background-position: center 30%; /* Posición por defecto para PC */
+            background-position: center 30%; /* Default position for Desktop / Posición por defecto para PC */
         }
 
+        /* --- Timeline Component / Componente de Línea de Tiempo --- */
         .timeline-item { position: relative; padding-bottom: 4rem; }
         .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 50%; top: 5rem; bottom: -2rem; transform: translateX(-50%); width: 3px; background-color: var(--color-light-gray); border-radius: 2px; }
         .timeline-marker { position: absolute; left: 50%; top: 2.5rem; transform: translateX(-50%); width: 2rem; height: 2rem; background-color: var(--color-red); border-radius: 50%; border: 4px solid var(--color-dark-gray); z-index: 10; }
         
-        /* Accesibilidad y Navegación Activa */
+        /* --- UI & Accessibility / Interfaz y Accesibilidad --- */
         :focus-visible { outline: 3px solid var(--color-red); outline-offset: 3px; border-radius: 2px; }
         .nav-active { color: var(--color-red) !important; }
 
-        /* Botón Volver Arriba */
+        /* --- Back to Top Button / Botón Volver Arriba --- */
         #back-to-top { position: fixed; bottom: 20px; right: 20px; background-color: var(--color-red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 50; transition: opacity 0.3s, transform 0.3s; }
         #back-to-top:hover { transform: scale(1.1); }
 
-        /* Responsive adjustments */
+        /* --- Responsive Adjustments / Ajustes Responsivos --- */
         @media (max-width: 767px) {
-            .hero-background {
-                background-position: center 25%;
-            }
-            .timeline-item:not(:last-child)::before, .timeline-marker {
-                display: none;
-            }
-            .timeline-item .grid {
-                grid-template-columns: 1fr;
-            }
-            .timeline-item > div > div {
-                text-align: center !important;
-            }
-             .timeline-item .md\:order-1, .timeline-item .md\:order-2 {
-                order: initial !important;
-            }
+            .hero-background { background-position: center 25%; }
+            .timeline-item:not(:last-child)::before, .timeline-marker { display: none; }
+            .timeline-item .grid { grid-template-columns: 1fr; }
+            .timeline-item > div > div { text-align: center !important; }
+             .timeline-item .md\:order-1, .timeline-item .md\:order-2 { order: initial !important; }
         }
     </style>
 </head>
 <body class="court-background">
 
-    <!-- HEADER / NAVEGACIÓN -->
+    <!-- ===== HEADER / NAVEGACIÓN ===== -->
+    <!-- ===== HEADER / NAVIGATION ===== -->
     <header id="header" class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50 transition-all duration-300">
         <div class="container mx-auto px-6 py-4 flex justify-between items-center">
             <a href="#" class="text-2xl font-bold font-display tracking-wider">MJ <span class="text-red-600">23</span></a>
@@ -124,7 +119,7 @@
     </div>
 
     <main>
-        <!-- HERO SECTION -->
+        <!-- ===== HERO SECTION / SECCIÓN PRINCIPAL ===== -->
         <section id="hero" class="h-screen w-full flex flex-col justify-center items-center text-center relative hero-background">
             <div class="z-10 relative container mx-auto px-6">
                 <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white tracking-wider" data-aos="zoom-in-up">MICHAEL JORDAN</h1>
@@ -135,7 +130,7 @@
             </a>
         </section>
 
-        <!-- CITA INTRODUCTORIA -->
+        <!-- ===== INTRODUCTORY QUOTE / CITA INTRODUCTORIA ===== -->
         <section id="intro" class="py-16 md:py-24 text-center bg-black/80 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <p data-aos="fade-up" class="text-xl md:text-3xl leading-relaxed max-w-4xl mx-auto italic text-gray-200">"He fallado más de 9000 tiros en mi carrera. He perdido casi 300 partidos. 26 veces, me han confiado el tiro ganador y he fallado. He fracasado una y otra vez en mi vida. Y es por eso que tengo éxito."</p>
@@ -143,7 +138,7 @@
             </div>
         </section>
 
-        <!-- LÍNEA DE TIEMPO -->
+        <!-- ===== TIMELINE / LÍNEA DE TIEMPO ===== -->
         <div id="timeline" class="container mx-auto px-6 py-16 md:py-24 bg-black/80">
              <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 md:mb-20 text-center">LA ASCENSIÓN DE UN REY</h2>
             <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-right" class="text-center md:text-left"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1982</p><h3 class="text-3xl md:text-5xl text-white mb-4">"THE SHOT": NACE UNA ESTRELLA</h3><p class="text-lg text-gray-300 leading-relaxed">Con tan solo 19 años, un joven de North Carolina se presenta al mundo con "The Shot", el tiro ganador en la final de la NCAA. Era el primer destello de una mentalidad ganadora que definiría una era.</p></div><div data-aos="fade-left" class="flex justify-center"><img src="https://library.sportingnews.com/styles/crop_style_16_9_mobile_2x/s3/2022-03/nba-plain--a0e51780-8d5d-4739-bd85-22cd7358c480.png?itok=sRdM3gI2" alt="Michael Jordan lanzando el tiro ganador con North Carolina" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="800" height="450"></div></div></div>
@@ -152,7 +147,7 @@
             <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-left" class="md:order-2 text-center md:text-right"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1996-98</p><h3 class="text-3xl md:text-5xl text-white mb-4">"I'M BACK"</h3><p class="text-lg text-gray-300 leading-relaxed">Tras un breve retiro, MJ regresa para liderar a los Bulls a otra racha de tres títulos consecutivos, incluyendo la mítica temporada de 72 victorias, y culminando con "The Last Shot".</p></div><div data-aos="fade-right" class="md:order-1 flex justify-center"><img src="http://3.bp.blogspot.com/-6rNYCjwsmXg/VyMh50oLLII/AAAAAAAAAIc/EtfiiNl_QuUBtIfAlrzOgYTfgS0LbgIfQCHM/s1600/neevtech-blog-michael-jordan-air-jordan-dunk.jpg" alt="Michael Jordan realizando un mate espectacular" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="1600" height="1200"></div></div></div>
         </div>
 
-        <!-- SECCIÓN DE ESTADÍSTICAS -->
+        <!-- ===== STATS SECTION / SECCIÓN DE ESTADÍSTICAS ===== -->
         <section id="stats" class="py-16 md:py-24 bg-black/80">
             <div class="container mx-auto px-6">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">ESTADÍSTICAS DE UNA LEYENDA</h2>
@@ -177,7 +172,7 @@
             </div>
         </section>
 
-        <!-- SECCIÓN DE RIVALES -->
+        <!-- ===== RIVALS SECTION / SECCIÓN DE RIVALES ===== -->
         <section id="rivals" class="py-16 md:py-24 bg-black/80 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">FORJADO EN EL FUEGO: RIVALES LEGENDARIOS</h2>
@@ -188,12 +183,12 @@
             </div>
         </section>
 
-        <!-- LEGADO CULTURAL -->
+        <!-- ===== CULTURAL LEGACY / LEGADO CULTURAL ===== -->
         <section id="legacy" class="py-16 md:py-24 bg-black/80">
             <div class="container mx-auto px-6"><h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">MÁS QUE UN JUGADOR: UN ÍCONO GLOBAL</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://i.pinimg.com/736x/bf/33/68/bf3368687267dc71a305e0eba2c83d66--jumpman-logo-air-jordan-shoes.jpg" alt="Zapatillas Air Jordan 1" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6 rounded-lg" loading="lazy" width="400" height="400"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">LA MARCA JORDAN</h3><p class="text-gray-300 leading-relaxed">Revolucionó el marketing deportivo. El "Jumpman" es hoy un símbolo global de excelencia y cultura urbana, una marca que definió cómo un atleta puede convertirse en un imperio.</p></div><div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://m.media-amazon.com/images/M/MV5BYjA3ZmMwNTUtNGM2Ni00YjUyLWE5ZDYtY2Y4YzhmYzlhYWI2XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg" alt="Póster de la película Space Jam" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6 rounded-lg" loading="lazy" width="1000" height="1000"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">REY DE HOLLYWOOD</h3><p class="text-gray-300 leading-relaxed">Al protagonizar Space Jam, rompió las barreras entre deporte y entretenimiento, consolidándolo como un ícono pop intergeneracional que sigue vigente hasta hoy.</p></div></div></div>
         </section>
 
-        <!-- GALERÍA DE MOMENTOS -->
+        <!-- ===== GALLERY OF MOMENTS / GALERÍA DE MOMENTOS ===== -->
         <section id="gallery" class="py-16 md:py-24 bg-black/80 backdrop-blur-sm">
             <div class="container mx-auto px-6 text-center">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16">MOMENTOS PARA LA ETERNIDAD</h2>
@@ -227,7 +222,7 @@
                         </div>
                     </div>
                     
-                    <div data-aos="fade-up" data-aos-delay="300" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
+                     <div data-aos="fade-up" data-aos-delay="300" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
                         <div class="group relative cursor-pointer" onclick="openModal('HefVn_RANXA')">
                            <img src="https://library.sportingnews.com/2021-08/dream-team-at-the-podium-after-winning-the-gold-medal-at-the-barcelona-olympics-in-1992_irplbe2fkzoi14sf5u3yqlygu.jpeg" alt="Dream Team" class="w-full h-64 object-cover">
                              <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
@@ -244,17 +239,17 @@
             </div>
         </section>
 
-        <!-- TRIVIA -->
+        <!-- ===== TRIVIA SECTION / SECCIÓN DE TRIVIA ===== -->
         <section id="trivia" class="py-16 md:py-24 bg-black/80">
             <div class="container mx-auto px-6 text-center">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16">TRIVIA DEL G.O.A.T.</h2>
                 <div id="trivia-container" data-aos="fade-up" class="max-w-2xl mx-auto bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl border border-gray-800">
-                    <!-- Las preguntas de la trivia se cargarán aquí con JS -->
+                    <!-- Trivia questions will be loaded here with JS / Las preguntas de la trivia se cargarán aquí con JS -->
                 </div>
             </div>
         </section>
 
-        <!-- SECCIÓN FINAL -->
+        <!-- ===== FINAL SECTION / SECCIÓN FINAL ===== -->
         <section class="py-16 md:py-24 text-center bg-black/80 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <div data-aos="zoom-in" class="flex justify-center mb-8">
@@ -268,7 +263,7 @@
         </section>
     </main>
 
-    <!-- FOOTER -->
+    <!-- ===== FOOTER / PIE DE PÁGINA ===== -->
     <footer class="py-12 text-center border-t border-gray-800 bg-black/80">
         <p class="text-gray-400">Proyecto original de Juan Cruz Ferrandini.</p>
         <p class="text-gray-500 text-sm mt-2">Inspirado en el más grande de todos los tiempos.</p>
@@ -280,9 +275,10 @@
                 <span>Conecta conmigo en LinkedIn</span>
             </a>
         </div>
+         <p class="mt-8 text-gray-500 text-xs">&copy; 2025 Juan Cruz Ferrandini. Todos los derechos reservados.</p>
     </footer>
 
-    <!-- MODAL PARA VIDEOS -->
+    <!-- ===== VIDEO MODAL / MODAL PARA VIDEOS ===== -->
     <div id="videoModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
         <div id="modalOverlay" class="absolute inset-0"></div>
         <div id="modalContent" class="relative w-full max-w-4xl h-auto transition-transform duration-300 transform scale-90 bg-dark-gray rounded-lg overflow-hidden shadow-2xl z-10">
@@ -291,35 +287,35 @@
         </div>
     </div>
     
-    <!-- Botón Volver Arriba -->
+    <!-- ===== BACK TO TOP BUTTON / BOTÓN VOLVER ARRIBA ===== -->
     <button id="back-to-top" aria-label="Volver arriba">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Flecha hacia abajo</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
     </button>
 
-    <!-- Scripts -->
+    <!-- ===== SCRIPTS ===== -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
 
-            // Animación de salida de la página
+            // --- Page fade-out animation / Animación de salida de la página ---
             window.addEventListener('beforeunload', function() {
                 document.body.classList.add('fade-out');
             });
 
-            // Inicializa AOS con la opción mirror
+            // --- Initialize AOS (Animate on Scroll) / Inicializar AOS ---
             AOS.init({ 
                 duration: 800, 
                 mirror: true 
             });
 
-            // Lógica del header
+            // --- Header Logic / Lógica del header ---
             const header = document.getElementById('header');
             window.addEventListener('scroll', () => {
                 header.classList.toggle('py-2', window.scrollY > 50);
                 header.classList.toggle('py-4', window.scrollY <= 50);
             });
             
-            // Lógica de Navegación Móvil
+            // --- Mobile Navigation Logic / Lógica de Navegación Móvil ---
             const menuToggle = document.getElementById('menu-toggle');
             const mobileMenu = document.getElementById('mobile-menu');
             const menuOpenIcon = document.getElementById('menu-open-icon');
@@ -341,7 +337,7 @@
                 });
             });
 
-            // Lógica de Navegación Activa (Scroll Spy)
+            // --- Active Navigation on Scroll (Scroll Spy) / Navegación Activa con Scroll ---
             const navLinks = document.querySelectorAll('nav a');
             const sections = Array.from(document.querySelectorAll('main section[id], main div[id]'));
             
@@ -358,7 +354,7 @@
                 if(sec.id) navObserver.observe(sec);
             });
 
-            // Lógica Botón Volver Arriba
+            // --- Back to Top Button Logic / Lógica del Botón Volver Arriba ---
             const backToTopButton = document.getElementById('back-to-top');
             window.addEventListener('scroll', () => {
                 if (window.scrollY > 300) {
@@ -369,11 +365,11 @@
             });
             backToTopButton.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
             
-            // Lógica de la Trivia
+            // --- Initialize Trivia / Inicializar Trivia ---
             setupTrivia();
         });
 
-        // Lógica del Modal (Global)
+        // --- Global Modal Logic / Lógica Global del Modal ---
         const modal = document.getElementById('videoModal');
         const modalContent = document.getElementById('modalContent');
         const modalOverlay = document.getElementById('modalOverlay');
@@ -385,6 +381,8 @@
             playerContainer.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             modal.classList.remove('hidden');
             
+            // Accessibility: Trap focus inside the modal
+            // Accesibilidad: Atrapar el foco dentro del modal
             const focusableElements = modal.querySelectorAll(focusableElementsString);
             firstFocusableElement = focusableElements[0];
             lastFocusableElement = focusableElements[focusableElements.length - 1];
@@ -426,7 +424,7 @@
             }
         }
         
-        // --- LÓGICA DE LA TRIVIA ---
+        // --- TRIVIA LOGIC / LÓGICA DE LA TRIVIA ---
         const triviaData = [
             { question: "¿Cuántos puntos anotó Jordan en el famoso 'Flu Game'?", options: ["38 Puntos", "45 Puntos", "32 Puntos"], answer: "38 Puntos" },
             { question: "¿Contra qué equipo fue 'The Last Shot' en 1998?", options: ["Seattle Supersonics", "Phoenix Suns", "Utah Jazz"], answer: "Utah Jazz" },
@@ -461,7 +459,8 @@
                 const correctAnswer = triviaData[currentQuestionIndex].answer;
                 const feedbackEl = document.getElementById('trivia-feedback');
                 
-                // Deshabilitar todos los botones
+                // Disable all buttons after an answer is selected
+                // Deshabilitar todos los botones después de seleccionar una respuesta
                 triviaContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
                 
                 if (selectedAnswer === correctAnswer) {
@@ -474,6 +473,8 @@
                     feedbackEl.innerHTML = `<span class="text-red-400">Incorrecto. La respuesta era ${correctAnswer}.</span>`;
                 }
 
+                // Move to the next question or end the game
+                // Mover a la siguiente pregunta o finalizar el juego
                 setTimeout(() => {
                     currentQuestionIndex++;
                     if (currentQuestionIndex < triviaData.length) {
