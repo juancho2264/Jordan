@@ -49,7 +49,7 @@
         .hero-background {
             background-image: linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.2) 50%, rgba(10, 10, 10, 0.8) 100%), url('https://www.chromethemer.com/download/hd-wallpapers/michael-jordan-3840x2160.jpg');
             background-size: cover;
-            background-position: center 30%; /* Ajusta la posición vertical para centrar a Jordan */
+            background-position: center 30%; /* Posición por defecto para PC */
         }
 
         .timeline-item { position: relative; padding-bottom: 4rem; }
@@ -64,8 +64,11 @@
         #back-to-top { position: fixed; bottom: 20px; right: 20px; background-color: var(--color-red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 50; transition: opacity 0.3s, transform 0.3s; }
         #back-to-top:hover { transform: scale(1.1); }
 
-        /* Responsive adjustments for Timeline */
+        /* Responsive adjustments */
         @media (max-width: 767px) {
+            .hero-background {
+                background-position: center 25%;
+            }
             .timeline-item:not(:last-child)::before, .timeline-marker {
                 display: none;
             }
@@ -91,6 +94,7 @@
             <!-- Desktop Nav -->
             <nav class="hidden md:flex space-x-8">
                 <a href="#timeline" class="hover:text-red-600 transition-colors duration-300">Trayectoria</a>
+                <a href="#stats" class="hover:text-red-600 transition-colors duration-300">Estadísticas</a>
                 <a href="#rivals" class="hover:text-red-600 transition-colors duration-300">Rivales</a>
                 <a href="#legacy" class="hover:text-red-600 transition-colors duration-300">Legado</a>
                 <a href="#gallery" class="hover:text-red-600 transition-colors duration-300">Momentos</a>
@@ -112,6 +116,7 @@
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-40 flex-col items-center justify-center space-y-8 md:hidden">
         <a href="#timeline" class="text-2xl text-white hover:text-red-600 transition-colors">Trayectoria</a>
+        <a href="#stats" class="text-2xl text-white hover:text-red-600 transition-colors">Estadísticas</a>
         <a href="#rivals" class="text-2xl text-white hover:text-red-600 transition-colors">Rivales</a>
         <a href="#legacy" class="text-2xl text-white hover:text-red-600 transition-colors">Legado</a>
         <a href="#gallery" class="text-2xl text-white hover:text-red-600 transition-colors">Momentos</a>
@@ -137,32 +142,55 @@
                 <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-xl font-bold text-red-600 font-subdisplay tracking-widest">- Michael Jordan</p>
             </div>
         </section>
-        
+
         <!-- LÍNEA DE TIEMPO -->
         <div id="timeline" class="container mx-auto px-6 py-16 md:py-24 bg-black/80">
              <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 md:mb-20 text-center">LA ASCENSIÓN DE UN REY</h2>
-            <!-- Items de la línea de tiempo -->
             <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-right" class="text-center md:text-left"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1982</p><h3 class="text-3xl md:text-5xl text-white mb-4">"THE SHOT": NACE UNA ESTRELLA</h3><p class="text-lg text-gray-300 leading-relaxed">Con tan solo 19 años, un joven de North Carolina se presenta al mundo con "The Shot", el tiro ganador en la final de la NCAA. Era el primer destello de una mentalidad ganadora que definiría una era.</p></div><div data-aos="fade-left" class="flex justify-center"><img src="https://library.sportingnews.com/styles/crop_style_16_9_mobile_2x/s3/2022-03/nba-plain--a0e51780-8d5d-4739-bd85-22cd7358c480.png?itok=sRdM3gI2" alt="Michael Jordan lanzando el tiro ganador con North Carolina" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="800" height="450"></div></div></div>
             <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-left" class="md:order-2 text-center md:text-right"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1984</p><h3 class="text-3xl md:text-5xl text-white mb-4">EL DRAFT: CHICAGO TIENE SU MESÍAS</h3><p class="text-lg text-gray-300 leading-relaxed">Seleccionado en 3ª posición. Dos equipos cometieron el error histórico de dejarlo pasar. Los Bulls, un equipo mediocre, acababan de seleccionar al hombre que cambiaría su destino para siempre.</p></div><div data-aos="fade-right" class="md:order-1 flex justify-center"><img src="https://media.cnn.com/api/v1/images/stellar/prod/200417133416-09-jordan-gallery-restricted.jpg?q=w_2500,h_3759,x_0,y_0,c_fill/h_447" alt="Michael Jordan en el Draft de 1984" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="1040" height="572"></div></div></div>
             <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-right" class="text-center md:text-left"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1991-93</p><h3 class="text-3xl md:text-5xl text-white mb-4">LA DINASTÍA BULLS</h3><p class="text-lg text-gray-300 leading-relaxed">Tras años de batallas, Jordan finalmente alcanza la gloria. Lidera a los Chicago Bulls a su primer tricampeonato, estableciendo un dominio absoluto sobre rivales históricos como los "Bad Boys" de Detroit.</p></div><div data-aos="fade-left" class="flex justify-center"><img src="http://a3.espncdn.com/photo/2013/0209/nba_jordan_13.jpg" alt="Michael Jordan celebrando su primer tricampeonato" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="600" height="400"></div></div></div>
             <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-left" class="md:order-2 text-center md:text-right"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1996-98</p><h3 class="text-3xl md:text-5xl text-white mb-4">"I'M BACK"</h3><p class="text-lg text-gray-300 leading-relaxed">Tras un breve retiro, MJ regresa para liderar a los Bulls a otra racha de tres títulos consecutivos, incluyendo la mítica temporada de 72 victorias, y culminando con "The Last Shot".</p></div><div data-aos="fade-right" class="md:order-1 flex justify-center"><img src="http://3.bp.blogspot.com/-6rNYCjwsmXg/VyMh50oLLII/AAAAAAAAAIc/EtfiiNl_QuUBtIfAlrzOgYTfgS0LbgIfQCHM/s1600/neevtech-blog-michael-jordan-air-jordan-dunk.jpg" alt="Michael Jordan realizando un mate espectacular" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="1600" height="1200"></div></div></div>
         </div>
 
-        <!-- NUEVA SECCIÓN: RIVALES -->
+        <!-- SECCIÓN DE ESTADÍSTICAS -->
+        <section id="stats" class="py-16 md:py-24 bg-black/80">
+            <div class="container mx-auto px-6">
+                <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">ESTADÍSTICAS DE UNA LEYENDA</h2>
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 text-center">
+                    <div data-aos="fade-up" class="bg-dark-gray/70 p-6 rounded-lg border border-gray-800">
+                        <p class="text-5xl md:text-7xl font-bold font-display text-red-600">6</p>
+                        <p class="mt-2 text-sm md:text-lg text-gray-300">Campeonatos NBA</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="100" class="bg-dark-gray/70 p-6 rounded-lg border border-gray-800">
+                        <p class="text-5xl md:text-7xl font-bold font-display text-red-600">6</p>
+                        <p class="mt-2 text-sm md:text-lg text-gray-300">MVP de las Finales</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 rounded-lg border border-gray-800">
+                        <p class="text-5xl md:text-7xl font-bold font-display text-red-600">5</p>
+                        <p class="mt-2 text-sm md:text-lg text-gray-300">MVP de Temporada</p>
+                    </div>
+                    <div data-aos="fade-up" data-aos-delay="300" class="bg-dark-gray/70 p-6 rounded-lg border border-gray-800">
+                        <p class="text-5xl md:text-7xl font-bold font-display text-red-600">10</p>
+                        <p class="mt-2 text-sm md:text-lg text-gray-300">Títulos de Anotación</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN DE RIVALES -->
         <section id="rivals" class="py-16 md:py-24 bg-black/80 backdrop-blur-sm">
             <div class="container mx-auto px-6">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">FORJADO EN EL FUEGO: RIVALES LEGENDARIOS</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
-                    <div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://thesource.com/wp-content/uploads/2020/04/6542554a.jpg" alt="Jordan vs Isiah Thomas" class="w-full h-48 md:h-64 object-contain rounded-md mb-6" loading="lazy" width="612" height="408"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">VS. DETROIT "BAD BOYS" PISTONS</h3><p class="text-gray-300 leading-relaxed">La muralla física y mental que tuvo que derribar. Las "Jordan Rules" lo obligaron a evolucionar de anotador a un líder implacable, más fuerte física y mentalmente para alcanzar la gloria.</p></div>
-                    <div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://i.pinimg.com/736x/91/f5/3c/91f53c0e1f5a0bea63ffd9b205c6de22--jordan-v-jordan-retro-.jpg" alt="Jordan vs Larry Bird" class="w-full h-48 md:h-64 object-contain rounded-md mb-6" loading="lazy" width="736" height="552"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">VS. LARRY BIRD & THE CELTICS</h3><p class="text-gray-300 leading-relaxed">Aunque sus equipos cayeron, fue aquí donde un joven Jordan anotó 63 puntos en un partido de playoffs y Larry Bird lo bautizó como "Dios disfrazado de jugador de baloncesto".</p></div>
+                    <div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://thesource.com/wp-content/uploads/2020/04/6542554a.jpg" alt="Jordan vs Isiah Thomas" class="w-full h-48 md:h-64 object-cover object-[50%_25%] rounded-lg mb-6" loading="lazy" width="612" height="408"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">VS. DETROIT "BAD BOYS" PISTONS</h3><p class="text-gray-300 leading-relaxed">La muralla física y mental que tuvo que derribar. Las "Jordan Rules" lo obligaron a evolucionar de anotador a un líder implacable, más fuerte física y mentalmente para alcanzar la gloria.</p></div>
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://i.pinimg.com/736x/91/f5/3c/91f53c0e1f5a0bea63ffd9b205c6de22--jordan-v-jordan-retro-.jpg" alt="Jordan vs Larry Bird" class="w-full h-48 md:h-64 object-cover object-[50%_25%] rounded-lg mb-6" loading="lazy" width="736" height="552"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">VS. LARRY BIRD & THE CELTICS</h3><p class="text-gray-300 leading-relaxed">Aunque sus equipos cayeron, fue aquí donde un joven Jordan anotó 63 puntos en un partido de playoffs y Larry Bird lo bautizó como "Dios disfrazado de jugador de baloncesto".</p></div>
                 </div>
             </div>
         </section>
 
         <!-- LEGADO CULTURAL -->
         <section id="legacy" class="py-16 md:py-24 bg-black/80">
-            <!-- Contenido de Legado -->
-            <div class="container mx-auto px-6"><h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">MÁS QUE UN JUGADOR: UN ÍCONO GLOBAL</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://archiveavenue.com/wp-content/uploads/2023/02/195_file.png" alt="Zapatillas Air Jordan 1" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6" loading="lazy" width="400" height="400"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">LA MARCA JORDAN</h3><p class="text-gray-300 leading-relaxed">Revolucionó el marketing deportivo. El "Jumpman" es hoy un símbolo global de excelencia y cultura urbana, una marca que definió cómo un atleta puede convertirse en un imperio.</p></div><div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://m.media-amazon.com/images/M/MV5BYjA3ZmMwNTUtNGM2Ni00YjUyLWE5ZDYtY2Y4YzhmYzlhYWI2XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg" alt="Póster de la película Space Jam" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6" loading="lazy" width="1000" height="1000"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">REY DE HOLLYWOOD</h3><p class="text-gray-300 leading-relaxed">Al protagonizar Space Jam, rompió las barreras entre deporte y entretenimiento, consolidándolo como un ícono pop intergeneracional que sigue vigente hasta hoy.</p></div></div></div>
+            <div class="container mx-auto px-6"><h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">MÁS QUE UN JUGADOR: UN ÍCONO GLOBAL</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://i.pinimg.com/736x/bf/33/68/bf3368687267dc71a305e0eba2c83d66--jumpman-logo-air-jordan-shoes.jpg" alt="Zapatillas Air Jordan 1" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6 rounded-lg" loading="lazy" width="400" height="400"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">LA MARCA JORDAN</h3><p class="text-gray-300 leading-relaxed">Revolucionó el marketing deportivo. El "Jumpman" es hoy un símbolo global de excelencia y cultura urbana, una marca que definió cómo un atleta puede convertirse en un imperio.</p></div><div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://m.media-amazon.com/images/M/MV5BYjA3ZmMwNTUtNGM2Ni00YjUyLWE5ZDYtY2Y4YzhmYzlhYWI2XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg" alt="Póster de la película Space Jam" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6 rounded-lg" loading="lazy" width="1000" height="1000"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">REY DE HOLLYWOOD</h3><p class="text-gray-300 leading-relaxed">Al protagonizar Space Jam, rompió las barreras entre deporte y entretenimiento, consolidándolo como un ícono pop intergeneracional que sigue vigente hasta hoy.</p></div></div></div>
         </section>
 
         <!-- GALERÍA DE MOMENTOS -->
@@ -170,55 +198,53 @@
             <div class="container mx-auto px-6 text-center">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16">MOMENTOS PARA LA ETERNIDAD</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <!-- Card 1: The Last Shot -->
+                    
                     <div data-aos="fade-up" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
                         <div class="group relative cursor-pointer" onclick="openModal('MlzL6bT1C2U')">
                             <img src="https://th.bing.com/th/id/R.bb43ba6a059c4308e4e32009f76bcfd6?rik=4PzItXaGBG7mhQ&pid=ImgRaw&r=0" alt="The Last Shot" class="w-full h-64 object-cover">
-                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                                 <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><title>Reproducir video</title><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                             </div>
                         </div>
                         <div class="p-4 text-center flex flex-col flex-grow">
                             <h3 class="text-2xl text-white font-subdisplay">THE LAST SHOT</h3>
                             <p class="text-red-500 text-sm">Finales 1998</p>
-                            <p class="text-gray-400 text-sm mt-2 leading-relaxed flex-grow">El tiro ganador contra Utah Jazz en las Finales de 1998, asegurando su sexto y último campeonato.</p>
+                            <p class="text-gray-300 text-sm mt-2 flex-grow">El tiro que sentenció las Finales de 1998 contra Utah Jazz, dándole a los Bulls su sexto campeonato y cerrando una era dorada.</p>
                         </div>
                     </div>
 
-                    <!-- Card 2: The Flu Game -->
                     <div data-aos="fade-up" data-aos-delay="150" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
-                        <div class="group relative cursor-pointer" onclick="openModal('2tS1i82fGzI')">
-                            <img src="https://prod.static9.net.au/fs/55bc864c-0017-446c-95fe-29a4c0c6d68d" alt="The Flu Game" class="w-full h-64 object-cover">
-                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <div class="group relative cursor-pointer" onclick="openModal('JBmxKU53zw0')">
+                            <img src="https://b-rise.com/wp-content/uploads/2018/06/Michael-Jordan-Flu-Game-1997-NBA-Finals-c-e1528667997828.jpg" alt="The Flu Game" class="w-full h-64 object-cover">
+                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                                 <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><title>Reproducir video</title><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                             </div>
                         </div>
                         <div class="p-4 text-center flex flex-col flex-grow">
                             <h3 class="text-2xl text-white font-subdisplay">THE FLU GAME</h3>
                             <p class="text-red-500 text-sm">Finales 1997</p>
-                            <p class="text-gray-400 text-sm mt-2 leading-relaxed flex-grow">Con 38 puntos, fiebre y deshidratación, Jordan lideró a los Bulls a una victoria crucial en las Finales de 1997.</p>
+                             <p class="text-gray-300 text-sm mt-2 flex-grow">Con 38 puntos, lideró a los Bulls a una victoria crucial, mostrando una determinación sobrehumana mientras luchaba contra una fuerte intoxicación.</p>
                         </div>
                     </div>
-
-                    <!-- Card 3: Dream Team -->
-                     <div data-aos="fade-up" data-aos-delay="300" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
-                        <div class="group relative cursor-pointer" onclick="openModal('_pOd43yJ2zY')">
+                    
+                    <div data-aos="fade-up" data-aos-delay="300" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
+                        <div class="group relative cursor-pointer" onclick="openModal('HefVn_RANXA')">
                            <img src="https://library.sportingnews.com/2021-08/dream-team-at-the-podium-after-winning-the-gold-medal-at-the-barcelona-olympics-in-1992_irplbe2fkzoi14sf5u3yqlygu.jpeg" alt="Dream Team" class="w-full h-64 object-cover">
-                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
                                 <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><title>Reproducir video</title><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
                             </div>
                         </div>
                         <div class="p-4 text-center flex flex-col flex-grow">
                             <h3 class="text-2xl text-white font-subdisplay">DREAM TEAM</h3>
                             <p class="text-red-500 text-sm">Barcelona 1992</p>
-                            <p class="text-gray-400 text-sm mt-2 leading-relaxed flex-grow">Jordan fue la estrella del equipo más dominante jamás ensamblado, cambiando para siempre el baloncesto mundial.</p>
+                             <p class="text-gray-300 text-sm mt-2 flex-grow">Junto a las mayores leyendas, lideró al equipo más icónico de la historia hacia el oro olímpico, catapultando el baloncesto a un fenómeno global.</p>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- NUEVA SECCIÓN: TRIVIA -->
+        <!-- TRIVIA -->
         <section id="trivia" class="py-16 md:py-24 bg-black/80">
             <div class="container mx-auto px-6 text-center">
                 <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16">TRIVIA DEL G.O.A.T.</h2>
@@ -244,20 +270,24 @@
 
     <!-- FOOTER -->
     <footer class="py-12 text-center border-t border-gray-800 bg-black/80">
-        <p class="text-gray-400">Página rediseñada y mejorada. Proyecto original de Juan Cruz Ferrandini.</p>
+        <p class="text-gray-400">Proyecto original de Juan Cruz Ferrandini.</p>
         <p class="text-gray-500 text-sm mt-2">Inspirado en el más grande de todos los tiempos.</p>
+        <div class="mt-4">
+            <a href="https://www.linkedin.com/in/juan-cruz-ferrandini-a47a89224/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center text-gray-400 hover:text-red-600 transition-colors duration-300">
+                <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                </svg>
+                <span>Conecta conmigo en LinkedIn</span>
+            </a>
+        </div>
     </footer>
 
     <!-- MODAL PARA VIDEOS -->
-    <div id="videoModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div id="videoModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true">
         <div id="modalOverlay" class="absolute inset-0"></div>
         <div id="modalContent" class="relative w-full max-w-4xl h-auto transition-transform duration-300 transform scale-90 bg-dark-gray rounded-lg overflow-hidden shadow-2xl z-10">
             <button onclick="closeModal()" class="absolute top-2 right-4 text-white text-4xl z-20" aria-label="Cerrar modal">&times;</button>
-            <div class="p-6">
-                 <h3 id="modalTitle" class="text-2xl font-subdisplay text-red-600"></h3>
-                 <p id="modalDescription" class="text-gray-300 mt-2"></p>
-            </div>
-            <div class="aspect-video" id="youtube-player-container"></div>
+            <div id="youtube-player-container" class="relative aspect-video"></div>
         </div>
     </div>
     
@@ -351,9 +381,7 @@
         const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
         let firstFocusableElement, lastFocusableElement;
 
-        function openModal(videoId, title, description) {
-            document.getElementById('modalTitle').innerText = title || '';
-            document.getElementById('modalDescription').innerText = description || '';
+        function openModal(videoId) {
             playerContainer.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
             modal.classList.remove('hidden');
             
