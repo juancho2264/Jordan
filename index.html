@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Michael Jordan: El Legado del 23 - Una Experiencia Definitiva</title>
+    <meta name="description" content="Explora la carrera, los momentos icónicos y el legado imborrable de Michael Jordan, el mejor jugador de baloncesto de todos los tiempos. Una web interactiva con videos, estadísticas y trivia.">
+    
+    <!-- Favicon (Tu logo) -->
+    <link rel="icon" type="image/jpeg" href="https://wallpapercave.com/wp/y4fbSdI.jpg">
+    
+    <!-- Tailwind CSS y Google Fonts -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&family=Bebas+Neue&display=swap" rel="stylesheet">
+    
+    <!-- AOS (Animate on Scroll) Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        :root {
+            --color-black: #0a0a0a;
+            --color-red: #ce1141;
+            --color-white: #f1f1f1;
+            --color-dark-gray: #111111;
+            --color-light-gray: #222222;
+        }
+
+        body {
+            background-color: var(--color-black);
+            color: var(--color-white);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden;
+            transition: opacity 0.4s ease-out; /* Para la animación de salida */
+        }
+        
+        body.fade-out {
+            opacity: 0;
+        }
+
+        h1, h2, h3, .font-display { font-family: 'Anton', sans-serif; letter-spacing: 1.5px; text-transform: uppercase; }
+        .font-subdisplay { font-family: 'Bebas Neue', cursive; }
+
+        .stroked-text { color: transparent; -webkit-text-stroke: 1px var(--color-red); }
+
+        .court-background { background-image: linear-gradient(rgba(10, 10, 10, 0.96), rgba(10, 10, 10, 0.96)), url('https://www.viajarchicago.com/img/visitar-chicago-bulls.jpg'); background-size: cover; background-position: center center; background-attachment: fixed; }
+        
+        .hero-background {
+            background-image: linear-gradient(to top, rgba(10, 10, 10, 0.8) 0%, rgba(10, 10, 10, 0.2) 50%, rgba(10, 10, 10, 0.8) 100%), url('https://www.chromethemer.com/download/hd-wallpapers/michael-jordan-3840x2160.jpg');
+            background-size: cover;
+            background-position: center 30%; /* Ajusta la posición vertical para centrar a Jordan */
+        }
+
+        .timeline-item { position: relative; padding-bottom: 4rem; }
+        .timeline-item:not(:last-child)::before { content: ''; position: absolute; left: 50%; top: 5rem; bottom: -2rem; transform: translateX(-50%); width: 3px; background-color: var(--color-light-gray); border-radius: 2px; }
+        .timeline-marker { position: absolute; left: 50%; top: 2.5rem; transform: translateX(-50%); width: 2rem; height: 2rem; background-color: var(--color-red); border-radius: 50%; border: 4px solid var(--color-dark-gray); z-index: 10; }
+        
+        /* Accesibilidad y Navegación Activa */
+        :focus-visible { outline: 3px solid var(--color-red); outline-offset: 3px; border-radius: 2px; }
+        .nav-active { color: var(--color-red) !important; }
+
+        /* Botón Volver Arriba */
+        #back-to-top { position: fixed; bottom: 20px; right: 20px; background-color: var(--color-red); color: white; border: none; border-radius: 50%; width: 50px; height: 50px; display: none; justify-content: center; align-items: center; cursor: pointer; z-index: 50; transition: opacity 0.3s, transform 0.3s; }
+        #back-to-top:hover { transform: scale(1.1); }
+
+        /* Responsive adjustments for Timeline */
+        @media (max-width: 767px) {
+            .timeline-item:not(:last-child)::before, .timeline-marker {
+                display: none;
+            }
+            .timeline-item .grid {
+                grid-template-columns: 1fr;
+            }
+            .timeline-item > div > div {
+                text-align: center !important;
+            }
+             .timeline-item .md\:order-1, .timeline-item .md\:order-2 {
+                order: initial !important;
+            }
+        }
+    </style>
+</head>
+<body class="court-background">
+
+    <!-- HEADER / NAVEGACIÓN -->
+    <header id="header" class="fixed top-0 left-0 w-full bg-black/70 backdrop-blur-md z-50 transition-all duration-300">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="text-2xl font-bold font-display tracking-wider">MJ <span class="text-red-600">23</span></a>
+            
+            <!-- Desktop Nav -->
+            <nav class="hidden md:flex space-x-8">
+                <a href="#timeline" class="hover:text-red-600 transition-colors duration-300">Trayectoria</a>
+                <a href="#rivals" class="hover:text-red-600 transition-colors duration-300">Rivales</a>
+                <a href="#legacy" class="hover:text-red-600 transition-colors duration-300">Legado</a>
+                <a href="#gallery" class="hover:text-red-600 transition-colors duration-300">Momentos</a>
+                <a href="#trivia" class="hover:text-red-600 transition-colors duration-300">Trivia</a>
+            </nav>
+            
+            <!-- Mobile Menu Button -->
+            <div class="md:hidden">
+                <button id="menu-toggle" class="text-white focus:outline-none" aria-label="Abrir menú">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path id="menu-open-icon" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-4 6h4"></path>
+                        <path id="menu-close-icon" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden fixed inset-0 bg-black/95 z-40 flex-col items-center justify-center space-y-8 md:hidden">
+        <a href="#timeline" class="text-2xl text-white hover:text-red-600 transition-colors">Trayectoria</a>
+        <a href="#rivals" class="text-2xl text-white hover:text-red-600 transition-colors">Rivales</a>
+        <a href="#legacy" class="text-2xl text-white hover:text-red-600 transition-colors">Legado</a>
+        <a href="#gallery" class="text-2xl text-white hover:text-red-600 transition-colors">Momentos</a>
+        <a href="#trivia" class="text-2xl text-white hover:text-red-600 transition-colors">Trivia</a>
+    </div>
+
+    <main>
+        <!-- HERO SECTION -->
+        <section id="hero" class="h-screen w-full flex flex-col justify-center items-center text-center relative hero-background">
+            <div class="z-10 relative container mx-auto px-6">
+                <h1 class="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-bold text-white tracking-wider" data-aos="zoom-in-up">MICHAEL JORDAN</h1>
+                <h2 class="mt-4 text-3xl sm:text-5xl md:text-6xl text-red-600 stroked-text font-subdisplay" data-aos="zoom-in-up" data-aos-delay="200">EL ÍCONO. LA LEYENDA. EL G.O.A.T.</h2>
+            </div>
+            <a href="#intro" aria-label="Ir a la siguiente sección" class="absolute bottom-10 animate-bounce z-10">
+                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Flecha hacia abajo</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+            </a>
+        </section>
+
+        <!-- CITA INTRODUCTORIA -->
+        <section id="intro" class="py-16 md:py-24 text-center bg-black/80 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                <p data-aos="fade-up" class="text-xl md:text-3xl leading-relaxed max-w-4xl mx-auto italic text-gray-200">"He fallado más de 9000 tiros en mi carrera. He perdido casi 300 partidos. 26 veces, me han confiado el tiro ganador y he fallado. He fracasado una y otra vez en mi vida. Y es por eso que tengo éxito."</p>
+                <p data-aos="fade-up" data-aos-delay="200" class="mt-6 text-xl font-bold text-red-600 font-subdisplay tracking-widest">- Michael Jordan</p>
+            </div>
+        </section>
+        
+        <!-- LÍNEA DE TIEMPO -->
+        <div id="timeline" class="container mx-auto px-6 py-16 md:py-24 bg-black/80">
+             <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 md:mb-20 text-center">LA ASCENSIÓN DE UN REY</h2>
+            <!-- Items de la línea de tiempo -->
+            <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-right" class="text-center md:text-left"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1982</p><h3 class="text-3xl md:text-5xl text-white mb-4">"THE SHOT": NACE UNA ESTRELLA</h3><p class="text-lg text-gray-300 leading-relaxed">Con tan solo 19 años, un joven de North Carolina se presenta al mundo con "The Shot", el tiro ganador en la final de la NCAA. Era el primer destello de una mentalidad ganadora que definiría una era.</p></div><div data-aos="fade-left" class="flex justify-center"><img src="https://library.sportingnews.com/styles/crop_style_16_9_mobile_2x/s3/2022-03/nba-plain--a0e51780-8d5d-4739-bd85-22cd7358c480.png?itok=sRdM3gI2" alt="Michael Jordan lanzando el tiro ganador con North Carolina" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="800" height="450"></div></div></div>
+            <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-left" class="md:order-2 text-center md:text-right"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1984</p><h3 class="text-3xl md:text-5xl text-white mb-4">EL DRAFT: CHICAGO TIENE SU MESÍAS</h3><p class="text-lg text-gray-300 leading-relaxed">Seleccionado en 3ª posición. Dos equipos cometieron el error histórico de dejarlo pasar. Los Bulls, un equipo mediocre, acababan de seleccionar al hombre que cambiaría su destino para siempre.</p></div><div data-aos="fade-right" class="md:order-1 flex justify-center"><img src="https://media.cnn.com/api/v1/images/stellar/prod/200417133416-09-jordan-gallery-restricted.jpg?q=w_2500,h_3759,x_0,y_0,c_fill/h_447" alt="Michael Jordan en el Draft de 1984" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="1040" height="572"></div></div></div>
+            <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-right" class="text-center md:text-left"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1991-93</p><h3 class="text-3xl md:text-5xl text-white mb-4">LA DINASTÍA BULLS</h3><p class="text-lg text-gray-300 leading-relaxed">Tras años de batallas, Jordan finalmente alcanza la gloria. Lidera a los Chicago Bulls a su primer tricampeonato, estableciendo un dominio absoluto sobre rivales históricos como los "Bad Boys" de Detroit.</p></div><div data-aos="fade-left" class="flex justify-center"><img src="http://a3.espncdn.com/photo/2013/0209/nba_jordan_13.jpg" alt="Michael Jordan celebrando su primer tricampeonato" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="600" height="400"></div></div></div>
+            <div class="timeline-item"><div class="timeline-marker"></div><div class="grid md:grid-cols-2 gap-8 md:gap-12 items-center"><div data-aos="fade-left" class="md:order-2 text-center md:text-right"><p class="text-6xl md:text-9xl font-black text-red-600 font-subdisplay">1996-98</p><h3 class="text-3xl md:text-5xl text-white mb-4">"I'M BACK"</h3><p class="text-lg text-gray-300 leading-relaxed">Tras un breve retiro, MJ regresa para liderar a los Bulls a otra racha de tres títulos consecutivos, incluyendo la mítica temporada de 72 victorias, y culminando con "The Last Shot".</p></div><div data-aos="fade-right" class="md:order-1 flex justify-center"><img src="http://3.bp.blogspot.com/-6rNYCjwsmXg/VyMh50oLLII/AAAAAAAAAIc/EtfiiNl_QuUBtIfAlrzOgYTfgS0LbgIfQCHM/s1600/neevtech-blog-michael-jordan-air-jordan-dunk.jpg" alt="Michael Jordan realizando un mate espectacular" class="rounded-lg shadow-2xl w-full max-w-lg object-cover transform hover:scale-105 transition-transform duration-300" loading="lazy" width="1600" height="1200"></div></div></div>
+        </div>
+
+        <!-- NUEVA SECCIÓN: RIVALES -->
+        <section id="rivals" class="py-16 md:py-24 bg-black/80 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">FORJADO EN EL FUEGO: RIVALES LEGENDARIOS</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+                    <div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://thesource.com/wp-content/uploads/2020/04/6542554a.jpg" alt="Jordan vs Isiah Thomas" class="w-full h-48 md:h-64 object-contain rounded-md mb-6" loading="lazy" width="612" height="408"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">VS. DETROIT "BAD BOYS" PISTONS</h3><p class="text-gray-300 leading-relaxed">La muralla física y mental que tuvo que derribar. Las "Jordan Rules" lo obligaron a evolucionar de anotador a un líder implacable, más fuerte física y mentalmente para alcanzar la gloria.</p></div>
+                    <div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://i.pinimg.com/736x/91/f5/3c/91f53c0e1f5a0bea63ffd9b205c6de22--jordan-v-jordan-retro-.jpg" alt="Jordan vs Larry Bird" class="w-full h-48 md:h-64 object-contain rounded-md mb-6" loading="lazy" width="736" height="552"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">VS. LARRY BIRD & THE CELTICS</h3><p class="text-gray-300 leading-relaxed">Aunque sus equipos cayeron, fue aquí donde un joven Jordan anotó 63 puntos en un partido de playoffs y Larry Bird lo bautizó como "Dios disfrazado de jugador de baloncesto".</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- LEGADO CULTURAL -->
+        <section id="legacy" class="py-16 md:py-24 bg-black/80">
+            <!-- Contenido de Legado -->
+            <div class="container mx-auto px-6"><h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16 text-center">MÁS QUE UN JUGADOR: UN ÍCONO GLOBAL</h2><div class="grid grid-cols-1 md:grid-cols-2 gap-10"><div data-aos="fade-up" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://archiveavenue.com/wp-content/uploads/2023/02/195_file.png" alt="Zapatillas Air Jordan 1" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6" loading="lazy" width="400" height="400"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">LA MARCA JORDAN</h3><p class="text-gray-300 leading-relaxed">Revolucionó el marketing deportivo. El "Jumpman" es hoy un símbolo global de excelencia y cultura urbana, una marca que definió cómo un atleta puede convertirse en un imperio.</p></div><div data-aos="fade-up" data-aos-delay="200" class="bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl flex flex-col items-center text-center border border-gray-800"><img src="https://m.media-amazon.com/images/M/MV5BYjA3ZmMwNTUtNGM2Ni00YjUyLWE5ZDYtY2Y4YzhmYzlhYWI2XkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_FMjpg_UX1000_.jpg" alt="Póster de la película Space Jam" class="w-full max-w-xs h-auto transform hover:scale-110 transition-transform duration-300 mb-6" loading="lazy" width="1000" height="1000"><h3 class="text-2xl md:text-3xl text-red-600 mb-4 font-subdisplay tracking-wider">REY DE HOLLYWOOD</h3><p class="text-gray-300 leading-relaxed">Al protagonizar Space Jam, rompió las barreras entre deporte y entretenimiento, consolidándolo como un ícono pop intergeneracional que sigue vigente hasta hoy.</p></div></div></div>
+        </section>
+
+        <!-- GALERÍA DE MOMENTOS -->
+        <section id="gallery" class="py-16 md:py-24 bg-black/80 backdrop-blur-sm">
+            <div class="container mx-auto px-6 text-center">
+                <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16">MOMENTOS PARA LA ETERNIDAD</h2>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Card 1: The Last Shot -->
+                    <div data-aos="fade-up" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
+                        <div class="group relative cursor-pointer" onclick="openModal('MlzL6bT1C2U')">
+                            <img src="https://th.bing.com/th/id/R.bb43ba6a059c4308e4e32009f76bcfd6?rik=4PzItXaGBG7mhQ&pid=ImgRaw&r=0" alt="The Last Shot" class="w-full h-64 object-cover">
+                            <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><title>Reproducir video</title><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl text-white font-subdisplay">THE LAST SHOT</h3>
+                            <p class="text-red-500 text-sm">Finales 1998</p>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed flex-grow">El tiro ganador contra Utah Jazz en las Finales de 1998, asegurando su sexto y último campeonato.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 2: The Flu Game -->
+                    <div data-aos="fade-up" data-aos-delay="150" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
+                        <div class="group relative cursor-pointer" onclick="openModal('2tS1i82fGzI')">
+                            <img src="https://prod.static9.net.au/fs/55bc864c-0017-446c-95fe-29a4c0c6d68d" alt="The Flu Game" class="w-full h-64 object-cover">
+                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><title>Reproducir video</title><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl text-white font-subdisplay">THE FLU GAME</h3>
+                            <p class="text-red-500 text-sm">Finales 1997</p>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed flex-grow">Con 38 puntos, fiebre y deshidratación, Jordan lideró a los Bulls a una victoria crucial en las Finales de 1997.</p>
+                        </div>
+                    </div>
+
+                    <!-- Card 3: Dream Team -->
+                     <div data-aos="fade-up" data-aos-delay="300" class="bg-dark-gray/70 rounded-lg overflow-hidden flex flex-col h-full">
+                        <div class="group relative cursor-pointer" onclick="openModal('_pOd43yJ2zY')">
+                           <img src="https://library.sportingnews.com/2021-08/dream-team-at-the-podium-after-winning-the-gold-medal-at-the-barcelona-olympics-in-1992_irplbe2fkzoi14sf5u3yqlygu.jpeg" alt="Dream Team" class="w-full h-64 object-cover">
+                             <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20"><title>Reproducir video</title><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd"></path></svg>
+                            </div>
+                        </div>
+                        <div class="p-4 text-center flex flex-col flex-grow">
+                            <h3 class="text-2xl text-white font-subdisplay">DREAM TEAM</h3>
+                            <p class="text-red-500 text-sm">Barcelona 1992</p>
+                            <p class="text-gray-400 text-sm mt-2 leading-relaxed flex-grow">Jordan fue la estrella del equipo más dominante jamás ensamblado, cambiando para siempre el baloncesto mundial.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- NUEVA SECCIÓN: TRIVIA -->
+        <section id="trivia" class="py-16 md:py-24 bg-black/80">
+            <div class="container mx-auto px-6 text-center">
+                <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-16">TRIVIA DEL G.O.A.T.</h2>
+                <div id="trivia-container" data-aos="fade-up" class="max-w-2xl mx-auto bg-dark-gray/70 p-6 md:p-8 rounded-lg shadow-2xl border border-gray-800">
+                    <!-- Las preguntas de la trivia se cargarán aquí con JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- SECCIÓN FINAL -->
+        <section class="py-16 md:py-24 text-center bg-black/80 backdrop-blur-sm">
+            <div class="container mx-auto px-6">
+                <div data-aos="zoom-in" class="flex justify-center mb-8">
+                     <video autoplay loop muted playsinline class="w-48 h-auto rounded-lg" width="192" height="192">
+                        <source src="https://media.giphy.com/media/Pmq2vJvAsL3nuYCWEm/giphy.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <h2 data-aos="fade-up" class="text-4xl md:text-6xl mb-6">EL SALTO INMORTAL</h2>
+                <p data-aos="fade-up" data-aos-delay="200" class="text-lg md:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">Más allá de los anillos, el verdadero legado de Michael Jordan es la inspiración. Su silueta en el aire no es solo un logo, es un recordatorio eterno de que los límites están para superarse.</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="py-12 text-center border-t border-gray-800 bg-black/80">
+        <p class="text-gray-400">Página rediseñada y mejorada. Proyecto original de Juan Cruz Ferrandini.</p>
+        <p class="text-gray-500 text-sm mt-2">Inspirado en el más grande de todos los tiempos.</p>
+    </footer>
+
+    <!-- MODAL PARA VIDEOS -->
+    <div id="videoModal" class="fixed inset-0 bg-black/90 flex items-center justify-center z-[100] hidden opacity-0 transition-opacity duration-300" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+        <div id="modalOverlay" class="absolute inset-0"></div>
+        <div id="modalContent" class="relative w-full max-w-4xl h-auto transition-transform duration-300 transform scale-90 bg-dark-gray rounded-lg overflow-hidden shadow-2xl z-10">
+            <button onclick="closeModal()" class="absolute top-2 right-4 text-white text-4xl z-20" aria-label="Cerrar modal">&times;</button>
+            <div class="p-6">
+                 <h3 id="modalTitle" class="text-2xl font-subdisplay text-red-600"></h3>
+                 <p id="modalDescription" class="text-gray-300 mt-2"></p>
+            </div>
+            <div class="aspect-video" id="youtube-player-container"></div>
+        </div>
+    </div>
+    
+    <!-- Botón Volver Arriba -->
+    <button id="back-to-top" aria-label="Volver arriba">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Flecha hacia abajo</title><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 15l7-7 7 7"></path></svg>
+    </button>
+
+    <!-- Scripts -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            // Animación de salida de la página
+            window.addEventListener('beforeunload', function() {
+                document.body.classList.add('fade-out');
+            });
+
+            // Inicializa AOS con la opción mirror
+            AOS.init({ 
+                duration: 800, 
+                mirror: true 
+            });
+
+            // Lógica del header
+            const header = document.getElementById('header');
+            window.addEventListener('scroll', () => {
+                header.classList.toggle('py-2', window.scrollY > 50);
+                header.classList.toggle('py-4', window.scrollY <= 50);
+            });
+            
+            // Lógica de Navegación Móvil
+            const menuToggle = document.getElementById('menu-toggle');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const menuOpenIcon = document.getElementById('menu-open-icon');
+            const menuCloseIcon = document.getElementById('menu-close-icon');
+
+            menuToggle.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+                menuOpenIcon.classList.toggle('hidden');
+                menuCloseIcon.classList.toggle('hidden');
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                    menuOpenIcon.classList.remove('hidden');
+                    menuCloseIcon.classList.add('hidden');
+                });
+            });
+
+            // Lógica de Navegación Activa (Scroll Spy)
+            const navLinks = document.querySelectorAll('nav a');
+            const sections = Array.from(document.querySelectorAll('main section[id], main div[id]'));
+            
+            const navObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                         navLinks.forEach(link => {
+                            link.classList.toggle('nav-active', link.getAttribute('href') === `#${entry.target.id}`);
+                        });
+                    }
+                });
+            }, { rootMargin: '-50% 0px -50% 0px' });
+            sections.forEach(sec => {
+                if(sec.id) navObserver.observe(sec);
+            });
+
+            // Lógica Botón Volver Arriba
+            const backToTopButton = document.getElementById('back-to-top');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    backToTopButton.style.display = 'flex';
+                } else {
+                    backToTopButton.style.display = 'none';
+                }
+            });
+            backToTopButton.addEventListener('click', () => { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+            
+            // Lógica de la Trivia
+            setupTrivia();
+        });
+
+        // Lógica del Modal (Global)
+        const modal = document.getElementById('videoModal');
+        const modalContent = document.getElementById('modalContent');
+        const modalOverlay = document.getElementById('modalOverlay');
+        const playerContainer = document.getElementById('youtube-player-container');
+        const focusableElementsString = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+        let firstFocusableElement, lastFocusableElement;
+
+        function openModal(videoId, title, description) {
+            document.getElementById('modalTitle').innerText = title || '';
+            document.getElementById('modalDescription').innerText = description || '';
+            playerContainer.innerHTML = `<iframe class="absolute top-0 left-0 w-full h-full" src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`;
+            modal.classList.remove('hidden');
+            
+            const focusableElements = modal.querySelectorAll(focusableElementsString);
+            firstFocusableElement = focusableElements[0];
+            lastFocusableElement = focusableElements[focusableElements.length - 1];
+            
+            setTimeout(() => {
+                modal.classList.remove('opacity-0');
+                modalContent.classList.remove('scale-90');
+                if (firstFocusableElement) firstFocusableElement.focus();
+            }, 10);
+            
+            modalOverlay.addEventListener('click', closeModal);
+            window.addEventListener('keydown', handleKeydown);
+        }
+
+        function closeModal() {
+            playerContainer.innerHTML = '';
+            modal.classList.add('opacity-0');
+            modalContent.classList.add('scale-90');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+            
+            modalOverlay.removeEventListener('click', closeModal);
+            window.removeEventListener('keydown', handleKeydown);
+        }
+
+        function handleKeydown(e) {
+            if (e.key === 'Escape') closeModal();
+            if (e.key === 'Tab') {
+                if (e.shiftKey) { // Shift + Tab
+                    if (document.activeElement === firstFocusableElement) {
+                        lastFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                } else { // Tab
+                    if (document.activeElement === lastFocusableElement) {
+                        firstFocusableElement.focus();
+                        e.preventDefault();
+                    }
+                }
+            }
+        }
+        
+        // --- LÓGICA DE LA TRIVIA ---
+        const triviaData = [
+            { question: "¿Cuántos puntos anotó Jordan en el famoso 'Flu Game'?", options: ["38 Puntos", "45 Puntos", "32 Puntos"], answer: "38 Puntos" },
+            { question: "¿Contra qué equipo fue 'The Last Shot' en 1998?", options: ["Seattle Supersonics", "Phoenix Suns", "Utah Jazz"], answer: "Utah Jazz" },
+            { question: "¿Qué número usó brevemente a su regreso a la NBA en 1995?", options: ["9", "45", "12"], answer: "45" },
+            { question: "¿En qué deporte jugó profesionalmente durante su primer retiro?", options: ["Golf", "Fútbol Americano", "Béisbol"], answer: "Béisbol" },
+            { question: "¿Cuántas veces fue nombrado Jugador Defensivo del Año?", options: ["Una vez", "Dos veces", "Tres veces"], answer: "Una vez" },
+            { question: "¿Qué apodo tenía en el instituto?", options: ["Air Jordan", "Magic Jordan", "Captain Marvel"], answer: "Magic Jordan" },
+            { question: "¿De qué equipo de la NBA es actualmente el propietario mayoritario?", options: ["Chicago Bulls", "Washington Wizards", "Charlotte Hornets"], answer: "Charlotte Hornets" }
+        ];
+        let currentQuestionIndex = 0;
+
+        function setupTrivia() {
+            const triviaContainer = document.getElementById('trivia-container');
+            
+            function renderQuestion() {
+                const currentQuestion = triviaData[currentQuestionIndex];
+                let optionsHtml = currentQuestion.options.map(option => `<button class="w-full text-left p-4 bg-gray-800 hover:bg-red-600 rounded-md transition-colors duration-300">${option}</button>`).join('');
+                
+                triviaContainer.innerHTML = `
+                    <h3 class="text-2xl text-gray-200 mb-6">${currentQuestion.question}</h3>
+                    <div class="space-y-4">${optionsHtml}</div>
+                    <p id="trivia-feedback" class="mt-6 h-6"></p>
+                `;
+
+                triviaContainer.querySelectorAll('button').forEach(button => {
+                    button.addEventListener('click', (e) => handleAnswer(e.target));
+                });
+            }
+
+            function handleAnswer(button) {
+                const selectedAnswer = button.innerText;
+                const correctAnswer = triviaData[currentQuestionIndex].answer;
+                const feedbackEl = document.getElementById('trivia-feedback');
+                
+                // Deshabilitar todos los botones
+                triviaContainer.querySelectorAll('button').forEach(btn => btn.disabled = true);
+                
+                if (selectedAnswer === correctAnswer) {
+                    button.classList.remove('bg-gray-800');
+                    button.classList.add('bg-green-600');
+                    feedbackEl.innerHTML = '<span class="text-green-400">¡Correcto!</span>';
+                } else {
+                    button.classList.remove('bg-gray-800');
+                    button.classList.add('bg-red-800');
+                    feedbackEl.innerHTML = `<span class="text-red-400">Incorrecto. La respuesta era ${correctAnswer}.</span>`;
+                }
+
+                setTimeout(() => {
+                    currentQuestionIndex++;
+                    if (currentQuestionIndex < triviaData.length) {
+                        renderQuestion();
+                    } else {
+                        triviaContainer.innerHTML = `<h3 class="text-2xl text-green-400">¡Gracias por jugar!</h3><button id="restart-trivia" class="mt-4 p-2 bg-red-600 rounded">Jugar de nuevo</button>`;
+                        document.getElementById('restart-trivia').addEventListener('click', () => {
+                            currentQuestionIndex = 0;
+                            renderQuestion();
+                        });
+                    }
+                }, 2000);
+            }
+            renderQuestion();
+        }
+    </script>
+</body>
+</html>
+
