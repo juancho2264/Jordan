@@ -61,7 +61,9 @@ export function initTrivia(questions) {
       });
     });
 
-    root.replaceChildren(
+    // Ojo: replaceChildren() convierte false/undefined en texto ("false").
+    // Por eso armamos la lista y filtramos los vacíos con .filter(Boolean).
+    const parts = [
       el('div', { class: 'trivia__top' },
         el('span', { text: `Pregunta ${state.index + 1} de ${total}` }),
         el('span', { text: `Puntaje: ${state.score}` }),
@@ -83,7 +85,8 @@ export function initTrivia(questions) {
           text: state.index + 1 < total ? 'Siguiente →' : 'Ver resultado →',
         }),
       ),
-    );
+    ];
+    root.replaceChildren(...parts.filter(Boolean));
   }
 
   function renderResult(total) {
