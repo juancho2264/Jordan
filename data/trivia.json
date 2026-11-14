@@ -1,0 +1,10 @@
+[
+  { "q": "¿En qué puesto lo eligieron en el draft de 1984?", "options": ["1.º", "2.º", "3.º", "5.º"], "answer": "3.º", "why": "Antes fueron elegidos Hakeem Olajuwon y Sam Bowie." },
+  { "q": "¿Cuántos campeonatos NBA ganó?", "options": ["4", "5", "6", "7"], "answer": "6", "why": "Dos tricampeonatos: 1991-93 y 1996-98." },
+  { "q": "¿Cuántos puntos le hizo a Boston en los playoffs de 1986?", "options": ["55", "61", "63", "69"], "answer": "63", "why": "Sigue siendo el récord de puntos en un partido de playoffs." },
+  { "q": "¿Qué récord tuvieron los Bulls en la temporada 1995-96?", "options": ["70-12", "72-10", "69-13", "73-9"], "answer": "72-10", "why": "Fue el mejor registro de la historia durante 20 años." },
+  { "q": "¿Qué deporte jugó durante su primer retiro?", "options": ["Golf", "Béisbol", "Fútbol americano", "Tenis"], "answer": "Béisbol", "why": "Jugó en las ligas menores con los Birmingham Barons." },
+  { "q": "¿Qué número usó al volver en 1995?", "options": ["12", "23", "45", "9"], "answer": "45", "why": "Era su número en el béisbol. Volvió al 23 en los playoffs de ese año." },
+  { "q": "¿Cuál es su promedio de puntos de carrera?", "options": ["27,4", "28,9", "30,1", "31,5"], "answer": "30,1", "why": "Es el promedio más alto de la historia de la temporada regular." },
+  { "q": "¿En qué universidad jugó?", "options": ["Duke", "North Carolina", "Kentucky", "UCLA"], "answer": "North Carolina", "why": "Jugó tres temporadas para los Tar Heels." }
+]
